@@ -1,4 +1,4 @@
-# Coach Marcus — Freelance Swimming Coach Website
+# Coach Terris — Freelance Swimming Coach Website
 
 A premium, mobile-first swimming coach website built with **React + Vite + Tailwind CSS + Framer Motion**.
 
