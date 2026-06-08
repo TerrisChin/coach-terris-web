@@ -120,6 +120,8 @@ export const GALLERY = [
   { src: "/images/g6-dive.jpeg", h: "tall", alt: "Coach Terris diving — competitive training" },
   { src: "/images/g3-noodle-coaching.jpeg", h: "tall", alt: "Pool noodle confidence drill with a young swimmer" },
   { src: "/images/g5-condo-pool.jpeg", h: "short", alt: "On-site coaching at a Kajang condo pool" },
+  { src: "/images/team-photo.jpeg", h: "short", alt: "Team Training Session" },
+  { src: "/images/medals.jpeg", h: "short", alt: "4th Butterfly 50m & 3rd Relay" },
 ];
 
 export const PARTNERS = ["SWIM THE WORLD", "Life Saving Society MY", "Asia Triathlon", "Putrajaya Tri", "KL Condo Pools", "Cheras Aquatics"];

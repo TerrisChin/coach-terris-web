@@ -9,6 +9,7 @@ import About from "./sections/About";
 import Benefits from "./sections/Benefits";
 import Services from "./sections/Services";
 import Pricing from "./sections/Pricing";
+import BookingSection from "./sections/BookingSection";
 import Schedule from "./sections/Schedule";
 import Gallery from "./sections/Gallery";
 import Testimonials from "./sections/Testimonials";
@@ -38,6 +39,7 @@ export default function App() {
           <Benefits />
           <Services />
           <Pricing />
+          <BookingSection />
           <Schedule />
           <Gallery />
           <Testimonials />

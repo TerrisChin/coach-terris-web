@@ -1,8 +1,10 @@
 import { Section, Reveal, Eyebrow, Heading, Button, Pill } from "../components/UI";
-import { SERVICES, COACH } from "../lib/data";
+import { SERVICES } from "../lib/data";
 import { Clock, ArrowRight, Sparkles } from "lucide-react";
+import { useCalendly } from "../useCalendly";
 
 export default function Services() {
+  const { openPopup } = useCalendly();
   return (
     <Section id="services" className="bg-navy-900">
       <Reveal className="text-center max-w-2xl mx-auto">
@@ -42,7 +44,7 @@ export default function Services() {
                   <span className="font-display font-extrabold text-2xl text-white">{s.price}</span>
                   <span className="text-sm text-white/50"> /session</span>
                 </div>
-                <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" variant={s.popular ? "primary" : "outline"} className="!px-5 !py-2.5 text-sm">
+                <Button onClick={openPopup} variant={s.popular ? "primary" : "outline"} className="!px-5 !py-2.5 text-sm">
                   Book Now <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
                 </Button>
               </div>

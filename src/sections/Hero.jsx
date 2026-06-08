@@ -2,11 +2,13 @@ import { motion } from "framer-motion";
 import { MessageCircle, PlayCircle, ChevronDown } from "lucide-react";
 import { Button } from "../components/UI";
 import { COACH } from "../lib/data";
+import { useCalendly } from "../useCalendly";
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } };
 const item = { hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] } } };
 
 export default function Hero() {
+  const { openPopup } = useCalendly();
   return (
     <section id="home" className="relative min-h-[100svh] flex items-center overflow-hidden bg-navy-950">
       {/* Background image */}
@@ -50,7 +52,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
-          <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="text-base">
+          <Button onClick={openPopup} className="text-base">
             <PlayCircle className="h-5 w-5" /> Book a Trial Class
           </Button>
           <Button as="a" href={COACH.whatsapp} target="_blank" rel="noreferrer" variant="secondary" className="text-base">
