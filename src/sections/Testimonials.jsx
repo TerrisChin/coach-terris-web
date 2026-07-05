@@ -25,14 +25,14 @@ export default function Testimonials() {
     <Section id="testimonials" className="bg-navy-900 overflow-hidden">
       <Reveal className="text-center max-w-2xl mx-auto">
         <Eyebrow>Testimonials</Eyebrow>
-        <Heading className="mt-4">Loved by swimmers & parents</Heading>
+        <Heading className="mt-4">Loved by clients & families</Heading>
         <div className="mt-5 inline-flex items-center gap-3 rounded-full glass px-5 py-2.5">
           <span className="flex text-aqua-400">
             {Array.from({ length: 5 }).map((_, i) => (
               <Star key={i} className="h-4 w-4 fill-aqua-400 text-aqua-400" />
             ))}
           </span>
-          <span className="text-sm text-white/80"><strong className="text-white">5.0</strong> rating · verified reviews on <strong className="text-white">Superprof</strong></span>
+          <span className="text-sm text-white/80"><strong className="text-white">5.0</strong> rating · verified client reviews</span>
         </div>
       </Reveal>
 
@@ -93,7 +93,7 @@ export default function Testimonials() {
 
           <div className="mt-8 text-center">
             <a href={COACH.socials.superprof} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm font-semibold text-aqua-400 hover:text-aqua-300 transition-colors">
-              Read all verified reviews on Superprof
+              Read all verified reviews
               <ChevronRight className="h-4 w-4" />
             </a>
           </div>

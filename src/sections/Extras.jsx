@@ -17,7 +17,7 @@ export function TrialBanner() {
               Your first lesson is the hardest.<br className="hidden sm:block" /> Let's take it together.
             </h2>
             <p className="mt-4 text-navy-950/80 text-lg max-w-xl mx-auto">
-              Book a $25 trial session — assess your level, meet your coach, and leave with a plan. Zero pressure.
+              Book an RM 50 trial session — assess your level, meet your trainer, and leave with a plan. Zero pressure.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
               <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" variant="secondary" className="!bg-navy-950 !text-white !border-navy-950 hover:!bg-navy-900">
@@ -56,7 +56,7 @@ export function InstagramFeed() {
       <Reveal className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="inline-flex items-center gap-2.5">
           <Instagram className="h-6 w-6 text-aqua-400" />
-          <span className="font-display font-bold text-xl text-white">@coachterris.swim</span>
+          <span className="font-display font-bold text-xl text-white">{COACH.instagramHandle}</span>
         </div>
         <a href={COACH.socials.instagram} className="text-sm font-semibold text-aqua-400 hover:text-aqua-300">Follow on Instagram →</a>
       </Reveal>

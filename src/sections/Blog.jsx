@@ -10,10 +10,10 @@ export default function Blog() {
   return (
     <Section id="blog" className="bg-navy-900">
       <Reveal className="text-center max-w-2xl mx-auto">
-        <Eyebrow>Swimming Tips</Eyebrow>
-        <Heading className="mt-4">Learn from the deck</Heading>
+        <Eyebrow>Training Tips</Eyebrow>
+        <Heading className="mt-4">Learn from the floor</Heading>
         <p className="mt-4 text-white/60 text-lg">
-          Free, practical advice I share with every student — from beating water fear to fixing your freestyle breathing.
+          Free, practical advice we share with every client — from building your first habit to recovering like a pro.
         </p>
       </Reveal>
 

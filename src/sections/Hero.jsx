@@ -14,8 +14,8 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/images/g6-dive.jpeg"
-          alt="Coach Terris diving into the pool during training"
+          src="/placeholders/hero.svg"
+          alt="Training session at Demo Studio"
           className="h-full w-full object-cover opacity-40"
           loading="eager"
         />
@@ -39,21 +39,21 @@ export default function Hero() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-aqua-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-aqua-400" />
           </span>
-          <span className="text-sm font-medium text-white/90">Now accepting new students · {COACH.tagline}</span>
+          <span className="text-sm font-medium text-white/90">Now accepting new clients · {COACH.tagline}</span>
         </motion.div>
 
         <motion.h1 variants={item} className="font-display font-extrabold tracking-tight text-white max-w-4xl text-5xl sm:text-6xl lg:text-7xl leading-[1.05]">
-          Learn Swimming<br />
+          Train Stronger<br />
           with <span className="gradient-text">Confidence</span>
         </motion.h1>
 
         <motion.p variants={item} className="mt-6 max-w-xl text-lg sm:text-xl text-white/70 leading-relaxed">
-          Premium on-site swimming lessons for kids and adults — at your own condo or home pool across KL, Cheras &amp; Kajang. From your first float to a confident freestyle.
+          Premium personal training for all ages and levels — at our studio or your own home gym across Kuala Lumpur. From your first session to lasting results.
         </motion.p>
 
         <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-4">
           <Button onClick={openPopup} className="text-base">
-            <PlayCircle className="h-5 w-5" /> Book a Trial Class
+            <PlayCircle className="h-5 w-5" /> Book a Trial Session
           </Button>
           <Button as="a" href={COACH.whatsapp} target="_blank" rel="noreferrer" variant="secondary" className="text-base">
             <MessageCircle className="h-5 w-5 text-aqua-400" /> WhatsApp Now
@@ -69,7 +69,7 @@ export default function Hero() {
           </div>
           <div className="text-sm">
             <div className="flex text-aqua-400">{"★★★★★"}</div>
-            <span className="text-white/70">Trusted by <strong className="text-white">100+</strong> happy swimmers</span>
+            <span className="text-white/70">Trusted by <strong className="text-white">100+</strong> happy clients</span>
           </div>
         </motion.div>
       </motion.div>

@@ -12,7 +12,7 @@ export default function Schedule() {
         {/* Schedule table */}
         <div className="lg:col-span-3">
           <Reveal><Eyebrow>Weekly Schedule</Eyebrow></Reveal>
-          <Reveal delay={0.05}><Heading className="mt-4">This week at the pool</Heading></Reveal>
+          <Reveal delay={0.05}><Heading className="mt-4">This week at the studio</Heading></Reveal>
           <Reveal delay={0.1}>
             <div className="mt-8 overflow-x-auto rounded-2xl ring-1 ring-white/10">
               <table className="w-full min-w-[520px] text-sm">
@@ -44,11 +44,11 @@ export default function Schedule() {
         <div className="lg:col-span-2">
           <Reveal>
             <div className="inline-flex items-center gap-2 text-aqua-400 font-semibold">
-              <LifeBuoy className="h-5 w-5" /> Water Safety Tips
+              <LifeBuoy className="h-5 w-5" /> Training Safety Tips
             </div>
           </Reveal>
           <Reveal delay={0.05}>
-            <h3 className="mt-3 font-display font-bold text-2xl text-white">Stay safe, swim smart</h3>
+            <h3 className="mt-3 font-display font-bold text-2xl text-white">Stay safe, train smart</h3>
           </Reveal>
           <div className="mt-6 space-y-3">
             {SAFETY_TIPS.map((t, i) => (

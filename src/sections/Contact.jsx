@@ -26,7 +26,7 @@ export default function Contact() {
       <Reveal className="text-center max-w-2xl mx-auto">
         <Eyebrow>Get In Touch</Eyebrow>
         <Heading className="mt-4">Book your first lesson</Heading>
-        <p className="mt-4 text-white/60 text-lg">Book your slot instantly on Google Calendar, fill out the form, or message me on WhatsApp — I usually reply within a couple of hours.</p>
+        <p className="mt-4 text-white/60 text-lg">Book your slot instantly online, fill out the form, or message us on WhatsApp — we usually reply within a couple of hours.</p>
       </Reveal>
 
       <div className="mt-14 grid lg:grid-cols-5 gap-8">
@@ -53,7 +53,7 @@ export default function Contact() {
                 onChange={(e) => setForm({ ...form, service: e.target.value })}
                 className="w-full rounded-xl bg-navy-950/60 border border-white/10 px-4 py-3 text-white focus:border-aqua-500 focus:outline-none focus:ring-2 focus:ring-aqua-500/30 transition"
               >
-                {["Kids Lessons", "Adult Beginner", "Private 1-on-1", "Stroke Correction", "Water Confidence", "Competitive"].map((s) => (
+                {["Personal Training", "Beginner Program", "Private 1-on-1", "Technique Fix", "Return to Fitness", "Small Group"].map((s) => (
                   <option key={s} className="bg-navy-900">{s}</option>
                 ))}
               </select>
@@ -108,7 +108,7 @@ export default function Contact() {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-xs text-white/50">Have a pool elsewhere in KL? I'll travel to you too.</p>
+                <p className="mt-2 text-xs text-white/50">Prefer training at home? We'll travel to you too.</p>
               </div>
               <div className="border-t border-white/10 pt-4">
                 <div className="flex items-center gap-2 text-white/40 text-xs uppercase tracking-wide mb-2">
@@ -131,7 +131,7 @@ export default function Contact() {
                 </div>
               </div>
               <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="w-full">
-                <CalendarCheck className="h-4 w-4" /> Book on Google Calendar
+                <CalendarCheck className="h-4 w-4" /> Book Online
               </Button>
               <Button as="a" href={COACH.whatsapp} target="_blank" rel="noreferrer" variant="secondary" className="w-full">
                 <MessageCircle className="h-4 w-4 text-aqua-400" /> Chat on WhatsApp
@@ -142,8 +142,8 @@ export default function Contact() {
           <Reveal delay={0.15}>
             <div className="overflow-hidden rounded-3xl ring-1 ring-white/10 h-56">
               <iframe
-                title="Pool location map"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=101.72%2C2.96%2C101.82%2C3.06&layer=mapnik&marker=3.01,101.77"
+                title="Location map"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=101.65%2C3.10%2C101.75%2C3.20&layer=mapnik&marker=3.15,101.70"
                 className="h-full w-full grayscale-[30%] contrast-110"
                 loading="lazy"
               />

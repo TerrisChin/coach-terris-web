@@ -3,19 +3,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
 import { COACH, SERVICES, PRICING, FAQS } from "../lib/data";
 
-// Build a compact knowledge base from the site data so the assistant answers accurately.
+// Build a compact knowledge base from the central site data so the assistant
+// answers accurately. Everything below is interpolated from data.js /
+// site.config.js — customize those files, not this prompt.
 const KNOWLEDGE = `
-You are "Coach Terris's Assistant", a friendly, concise AI helper on the website of Terris Chin, a professional mobile swimming coach in Kuala Lumpur, Malaysia. You help visitors with questions about lessons and gently encourage them to book a trial. Keep replies short (2-4 sentences), warm, and helpful. You can reply in English or Simplified Chinese (简体中文) depending on the visitor's language.
+You are "${COACH.short} Assistant", a friendly, concise AI helper on the website of ${COACH.name}, who runs ${COACH.short}, a professional personal training business in Kuala Lumpur, Malaysia. You help visitors with questions about training sessions and gently encourage them to book a trial. Keep replies short (2-4 sentences), warm, and helpful. You can reply in English or Simplified Chinese (简体中文) depending on the visitor's language.
 
-COACH FACTS:
-- Name: Terris Chin (Coach Terris). Young, energetic, ~3 years teaching experience, competitive triathlete (Asia Triathlon Cup 2026 finisher).
-- Certifications: SWIM THE WORLD Certified Instructor (Kids & Adults), Bronze Medallion (Life Saving Society of Malaysia), Expired Air Resuscitation (EAR) / CPR trained.
-- Languages: English and Simplified Chinese (中文) only.
-- Service area: On-site mobile coaching (上门教学) — he travels to the student's condo or private home pool across KL, Cheras, and Kajang. Regularly coaches at You Residence (Cheras) and Pearl Avenue (Sungai Chua, Kajang).
+BUSINESS FACTS:
+- Business: ${COACH.short}, led by ${COACH.name}. Tagline: ${COACH.tagline}
+- Languages: ${COACH.languages}.
+- Service area: ${COACH.location}. Regular venues: ${COACH.venues.join("; ")}.
 - Phone/WhatsApp: ${COACH.phone}. Email: ${COACH.email}.
-- Booking: via Google Calendar link on the site, or WhatsApp.
-- Operating hours: Mon-Fri 6am-9pm, Sat 7am-6pm, Sun 8am-2pm.
-- Rating: 5.0 with verified reviews on Superprof.
+- Booking: via the "Book Now" button on the site, or WhatsApp.
+- Operating hours: ${COACH.hours.map((h) => `${h.day} ${h.time}`).join(", ")}.
 
 SERVICES: ${SERVICES.map((s) => `${s.title} (${s.duration}, ${s.level}, ${s.price})`).join("; ")}.
 
@@ -24,23 +24,23 @@ PRICING: ${PRICING.map((p) => `${p.name}: ${p.price} ${p.per} — ${p.features.j
 POLICIES: ${FAQS.map((f) => `Q: ${f.q} A: ${f.a}`).join(" ")}
 
 RULES:
-- Be honest. If you don't know something specific, suggest contacting Coach Terris on WhatsApp.
-- For booking requests, point them to the "Book Now" button / Google Calendar or WhatsApp.
+- Be honest. If you don't know something specific, suggest contacting ${COACH.short} on WhatsApp.
+- For booking requests, point them to the "Book Now" button or WhatsApp.
 - Never invent prices or facts not listed above.
 - Keep it encouraging and human. Don't use long bullet lists; speak naturally.
 `;
 
 const SUGGESTIONS = [
-  "How much are lessons?",
-  "Do you teach kids who fear water?",
-  "Which areas do you cover?",
-  "可以用中文教学吗？",
+  "How much are sessions?",
+  "Do you coach complete beginners?",
+  "Can you train me at home?",
+  "可以用中文授课吗？",
 ];
 
 export default function ChatBot() {
   const [openChat, setOpenChat] = useState(false);
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Hi! 👋 I'm Coach Terris's assistant. Ask me anything about swimming lessons, pricing, or booking — in English or 中文!" },
+    { role: "assistant", content: `Hi! 👋 I'm the ${COACH.short} assistant. Ask me anything about training, pricing, or booking — in English or 中文!` },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -77,9 +77,9 @@ export default function ChatBot() {
         .filter(Boolean)
         .join("\n")
         .trim();
-      setMessages((m) => [...m, { role: "assistant", content: reply || "Sorry, I didn't catch that — could you rephrase? Or message Coach Terris directly on WhatsApp." }]);
+      setMessages((m) => [...m, { role: "assistant", content: reply || "Sorry, I didn't catch that — could you rephrase? Or message us directly on WhatsApp." }]);
     } catch (e) {
-      setMessages((m) => [...m, { role: "assistant", content: "I'm having trouble connecting right now. Please reach Coach Terris on WhatsApp and he'll reply personally!" }]);
+      setMessages((m) => [...m, { role: "assistant", content: "I'm having trouble connecting right now. Please reach us on WhatsApp and we'll reply personally!" }]);
     } finally {
       setLoading(false);
     }
@@ -117,7 +117,7 @@ export default function ChatBot() {
                 <Sparkles className="h-5 w-5 text-navy-950" />
               </span>
               <div>
-                <div className="font-display font-bold text-navy-950 leading-none">Coach Terris's Assistant</div>
+                <div className="font-display font-bold text-navy-950 leading-none">{COACH.short} Assistant</div>
                 <div className="text-xs text-navy-950/70 mt-0.5">AI helper · usually instant</div>
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function ChatBot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && send()}
-                  placeholder="Ask about lessons…"
+                  placeholder="Ask about sessions…"
                   className="flex-1 rounded-full bg-navy-950/60 border border-white/10 px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-aqua-500 focus:outline-none"
                 />
                 <button
@@ -172,7 +172,7 @@ export default function ChatBot() {
                   <Send className="h-4 w-4" />
                 </button>
               </div>
-              <p className="mt-2 text-center text-[10px] text-white/30">AI assistant · for exact details, message Coach Terris</p>
+              <p className="mt-2 text-center text-[10px] text-white/30">AI assistant · for exact details, message us on WhatsApp</p>
             </div>
           </motion.div>
         )}

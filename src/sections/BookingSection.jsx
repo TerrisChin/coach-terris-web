@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Section, Reveal, Eyebrow, Heading, Button } from "../components/UI";
-import { Users, Clock, Waves, CheckCircle } from "lucide-react";
+import { Users, Clock, Dumbbell, CheckCircle } from "lucide-react";
 import { useCalendly } from "../useCalendly";
+import { CALENDLY_URL } from "../lib/site.config";
 
 export default function BookingSection() {
   const { openPopup } = useCalendly();
@@ -20,9 +21,9 @@ export default function BookingSection() {
   }, []);
 
   const features = [
-    { icon: Users, label: "Private 1-on-1", desc: "Just you and Coach Terris" },
-    { icon: Clock, label: "60 Minutes", desc: "Full comprehensive lesson" },
-    { icon: Waves, label: "Your Pool", desc: "We come to you — KL, Cheras & Kajang" },
+    { icon: Users, label: "Private 1-on-1", desc: "Just you and your trainer" },
+    { icon: Clock, label: "60 Minutes", desc: "Full comprehensive session" },
+    { icon: Dumbbell, label: "Your Space", desc: "Our studio, or we come to you" },
     { icon: CheckCircle, label: "Instant Confirm", desc: "Availability calendar in real-time" },
   ];
 
@@ -33,9 +34,9 @@ export default function BookingSection() {
         <div>
           <Reveal className="mb-8">
             <Eyebrow>Ready to start?</Eyebrow>
-            <Heading className="mt-4 text-white">Book your free trial class</Heading>
+            <Heading className="mt-4 text-white">Book your free trial session</Heading>
             <p className="mt-4 text-white/70 text-lg leading-relaxed">
-              Pick a time that works for you. No contracts, no commitment — just a free session to see if swimming lessons are right for you.
+              Pick a time that works for you. No contracts, no commitment — just a free session to see if our coaching is right for you.
             </p>
           </Reveal>
 
@@ -68,7 +69,7 @@ export default function BookingSection() {
             {isCalendlyLoaded ? (
               <div
                 className="calendly-inline-widget w-full h-full"
-                data-url="https://calendly.com/chinterris/free-trial-class?embed_domain=&embed_type=Inline"
+                data-url={`${CALENDLY_URL}?embed_domain=&embed_type=Inline`}
               />
             ) : (
               <div className="text-center p-8">
@@ -77,7 +78,7 @@ export default function BookingSection() {
                 </div>
                 <h3 className="font-semibold text-white mb-2">Schedule Your Session</h3>
                 <p className="text-white/60 text-sm mb-6">
-                  Click below to view available times and book your free trial class.
+                  Click below to view available times and book your free trial session.
                 </p>
                 <Button onClick={openPopup}>
                   Open Calendar

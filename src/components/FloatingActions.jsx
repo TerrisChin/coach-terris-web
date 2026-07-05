@@ -39,7 +39,7 @@ export default function FloatingActions() {
               <button onClick={() => setTip(false)} className="absolute -top-2 -left-2 grid h-5 w-5 place-items-center rounded-full bg-navy-900 text-white">
                 <X className="h-3 w-3" />
               </button>
-              <p className="text-sm font-medium text-navy-900">👋 Questions? Chat with Coach Terris!</p>
+              <p className="text-sm font-medium text-navy-900">👋 Questions? Chat with us!</p>
             </motion.div>
           )}
         </AnimatePresence>

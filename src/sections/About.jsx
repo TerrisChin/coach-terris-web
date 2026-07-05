@@ -12,8 +12,8 @@ export default function About() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-aqua-500/20 to-transparent blur-2xl" />
             <img
-              src="/images/coach-terris.jpeg"
-              alt="Coach Terris at poolside"
+              src="/placeholders/portrait.svg"
+              alt="Lead trainer portrait"
               className="relative rounded-3xl object-cover w-full h-[480px] shadow-2xl ring-1 ring-white/10"
             />
             <motion.div
@@ -33,27 +33,27 @@ export default function About() {
         </Reveal>
 
         <div>
-          <Reveal><Eyebrow>About the Coach</Eyebrow></Reveal>
+          <Reveal><Eyebrow>About the Trainer</Eyebrow></Reveal>
           <Reveal delay={0.05}>
             <Heading className="mt-4">Meet {COACH.name}</Heading>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-5 text-lg text-white/70 leading-relaxed">
-              As a young, energetic coach and competitive triathlete, I've spent the last three years helping swimmers of every age and ability feel at home in the water — coaching fluently in both English and 简体中文. My approach is simple: build trust first, technique second. Confidence is the current that carries everything else.
+              As a dedicated coach and lifelong athlete, I've spent the last five years helping clients of every age and ability build real strength — coaching fluently in both English and 简体中文. My approach is simple: build trust first, technique second. Consistency carries everything else.
             </p>
           </Reveal>
           <Reveal delay={0.15}>
             <div className="mt-6 relative rounded-2xl border-l-4 border-aqua-500 bg-white/5 p-5">
               <Quote className="absolute -top-3 -left-1 h-8 w-8 text-aqua-500/40" />
               <p className="italic text-white/80">
-                "Every great swimmer was once a beginner who refused to give up. My job is to make sure you never have to give up alone."
+                "Every strong athlete was once a beginner who refused to give up. My job is to make sure you never have to give up alone."
               </p>
               <p className="mt-3 text-sm font-semibold text-aqua-400">— Coaching Philosophy</p>
             </div>
           </Reveal>
           <Reveal delay={0.2}>
             <Button as="a" href="#services" onClick={(e) => { e.preventDefault(); document.getElementById("services")?.scrollIntoView({ behavior: "smooth" }); }} variant="outline" className="mt-7">
-              Explore Lessons
+              Explore Programs
             </Button>
           </Reveal>
         </div>
@@ -77,7 +77,7 @@ export default function About() {
       <div className="mt-28">
         <Reveal className="text-center max-w-2xl mx-auto">
           <Eyebrow>The Journey</Eyebrow>
-          <Heading className="mt-4">From Beginner Coach to Triathlete</Heading>
+          <Heading className="mt-4">From first client to full studio</Heading>
         </Reveal>
 
         <div className="relative mt-14 max-w-3xl mx-auto">

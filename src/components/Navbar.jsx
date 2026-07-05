@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Waves, MessageCircle, CalendarCheck } from "lucide-react";
+import { Menu, X, Sun, Moon, Dumbbell, CalendarCheck } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { COACH } from "../lib/data";
+import { BRAND } from "../lib/site.config";
 import { Button } from "./UI";
 
 const LINKS = [
@@ -59,10 +60,10 @@ export default function Navbar() {
           {/* Logo */}
           <button onClick={() => go("home")} className="flex items-center gap-2.5 group">
             <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-aqua-400 to-aqua-600 shadow-lg shadow-aqua-500/30 group-hover:rotate-6 transition-transform">
-              <Waves className="h-5 w-5 text-navy-950" strokeWidth={2.5} />
+              <Dumbbell className="h-5 w-5 text-navy-950" strokeWidth={2.5} />
             </span>
             <span className="font-display font-extrabold text-lg leading-none text-white">
-              Coach<span className="text-aqua-400">Terris</span>
+              {BRAND.first}<span className="text-aqua-400">{BRAND.accent}</span>
             </span>
           </button>
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Waves, Instagram, Facebook, Youtube, Send } from "lucide-react";
+import { Dumbbell, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { COACH } from "../lib/data";
+import { BRAND } from "../lib/site.config";
 
 const NAV = [
   ["About", "about"], ["Services", "services"], ["Pricing", "pricing"],
@@ -21,15 +22,15 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <div className="flex items-center gap-2.5">
               <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-aqua-400 to-aqua-600">
-                <Waves className="h-5 w-5 text-navy-950" strokeWidth={2.5} />
+                <Dumbbell className="h-5 w-5 text-navy-950" strokeWidth={2.5} />
               </span>
-              <span className="font-display font-extrabold text-lg text-white">Coach<span className="text-aqua-400">Terris</span></span>
+              <span className="font-display font-extrabold text-lg text-white">{BRAND.first}<span className="text-aqua-400">{BRAND.accent}</span></span>
             </div>
             <p className="mt-4 text-white/55 max-w-sm">
-              Premium mobile swimming coaching for kids and adults across KL, Cheras & Kajang. Certified, patient, and a fellow endurance athlete genuinely invested in your progress.
+              Premium personal training for all ages and levels across Kuala Lumpur. Certified, patient, and genuinely invested in your progress.
             </p>
             <div className="mt-6">
-              <p className="text-sm font-semibold text-white">Get free swimming tips</p>
+              <p className="text-sm font-semibold text-white">Get free training tips</p>
               <form onSubmit={(e) => { e.preventDefault(); setDone(true); setEmail(""); }} className="mt-3 flex gap-2 max-w-sm">
                 <input
                   required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
@@ -40,7 +41,7 @@ export default function Footer() {
                   <Send className="h-4 w-4" />
                 </button>
               </form>
-              {done && <p className="mt-2 text-sm text-aqua-400">You're subscribed! 🏊</p>}
+              {done && <p className="mt-2 text-sm text-aqua-400">You're subscribed! 💪</p>}
             </div>
           </div>
 
@@ -97,8 +98,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/40">
-          <p>© {new Date().getFullYear()} Coach Terris Swim. All rights reserved.</p>
-          <p>Built with care for swimmers everywhere.</p>
+          <p>© {new Date().getFullYear()} {COACH.short}. All rights reserved.</p>
+          <p>Built with care for our clients everywhere.</p>
         </div>
       </div>
     </footer>

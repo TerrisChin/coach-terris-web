@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { CALENDLY_URL } from "./lib/site.config";
 
 export function useCalendly() {
   useEffect(() => {
@@ -25,7 +26,7 @@ export function useCalendly() {
 
   const openPopup = () => {
     if (window.Calendly) {
-      window.Calendly.showPopupWidget("https://calendly.com/chinterris/free-trial-class");
+      window.Calendly.showPopupWidget(CALENDLY_URL);
     }
   };
 
