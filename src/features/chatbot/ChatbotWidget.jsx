@@ -1,34 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Sparkles, Loader2 } from "lucide-react";
-import { COACH, SERVICES, PRICING, FAQS } from "../lib/data";
+import { X, Send, Sparkles, Loader2 } from "lucide-react";
+import { COACH } from "../../lib/data";
+import { buildSystemPrompt } from "./buildSystemPrompt";
 
-// Build a compact knowledge base from the central site data so the assistant
-// answers accurately. Everything below is interpolated from data.js /
-// site.config.js — customize those files, not this prompt.
-const KNOWLEDGE = `
-You are "${COACH.short} Assistant", a friendly, concise AI helper on the website of ${COACH.name}, who runs ${COACH.short}, a professional personal training business in Kuala Lumpur, Malaysia. You help visitors with questions about training sessions and gently encourage them to book a trial. Keep replies short (2-4 sentences), warm, and helpful. You can reply in English or Simplified Chinese (简体中文) depending on the visitor's language.
-
-BUSINESS FACTS:
-- Business: ${COACH.short}, led by ${COACH.name}. Tagline: ${COACH.tagline}
-- Languages: ${COACH.languages}.
-- Service area: ${COACH.location}. Regular venues: ${COACH.venues.join("; ")}.
-- Phone/WhatsApp: ${COACH.phone}. Email: ${COACH.email}.
-- Booking: via the "Book Now" button on the site, or WhatsApp.
-- Operating hours: ${COACH.hours.map((h) => `${h.day} ${h.time}`).join(", ")}.
-
-SERVICES: ${SERVICES.map((s) => `${s.title} (${s.duration}, ${s.level}, ${s.price})`).join("; ")}.
-
-PRICING: ${PRICING.map((p) => `${p.name}: ${p.price} ${p.per} — ${p.features.join(", ")}`).join(" | ")}.
-
-POLICIES: ${FAQS.map((f) => `Q: ${f.q} A: ${f.a}`).join(" ")}
-
-RULES:
-- Be honest. If you don't know something specific, suggest contacting ${COACH.short} on WhatsApp.
-- For booking requests, point them to the "Book Now" button or WhatsApp.
-- Never invent prices or facts not listed above.
-- Keep it encouraging and human. Don't use long bullet lists; speak naturally.
-`;
+const SYSTEM_PROMPT = buildSystemPrompt();
 
 const SUGGESTIONS = [
   "How much are sessions?",
@@ -37,7 +13,7 @@ const SUGGESTIONS = [
   "可以用中文授课吗？",
 ];
 
-export default function ChatBot() {
+export default function ChatbotWidget() {
   const [openChat, setOpenChat] = useState(false);
   const [messages, setMessages] = useState([
     { role: "assistant", content: `Hi! 👋 I'm the ${COACH.short} assistant. Ask me anything about training, pricing, or booking — in English or 中文!` },
@@ -60,12 +36,12 @@ export default function ChatBot() {
 
     try {
       // Calls our own serverless proxy (/api/chat), which holds the API key
-      // securely on the server. See api/chat.js and DEPLOYMENT.md.
+      // securely on the server. See src/features/chatbot/api/chat.mjs.
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          system: KNOWLEDGE,
+          system: SYSTEM_PROMPT,
           messages: next
             .filter((m) => m.role === "user" || m.role === "assistant")
             .map((m) => ({ role: m.role, content: m.content })),

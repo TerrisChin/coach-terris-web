@@ -5,6 +5,16 @@
 // ============================================================================
 
 // ---------------------------------------------------------------------------
+// Feature flags — optional add-on modules. Flip per client.
+// ---------------------------------------------------------------------------
+export const featureFlags = {
+  // AI chatbot add-on (src/features/chatbot). Needs ANTHROPIC_API_KEY set on
+  // the host (see docs/ADDON_CHATBOT.md). When false, the chatbot is not
+  // rendered and its code is excluded from the production JS bundle.
+  aiChatbot: true,
+};
+
+// ---------------------------------------------------------------------------
 // Calendly — REPLACE with the client's Calendly username (calendly.com/<username>)
 // and the event slug of the booking page you want to open.
 // ---------------------------------------------------------------------------

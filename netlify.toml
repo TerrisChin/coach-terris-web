@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# The AI chatbot's serverless function lives inside its feature folder so the
+# whole add-on is self-contained. The function itself declares its route
+# (/api/chat) via `export const config` — no redirect rules needed.
+[functions]
+  directory = "src/features/chatbot/api"

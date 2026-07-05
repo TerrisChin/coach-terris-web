@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
@@ -16,9 +16,15 @@ import Testimonials from "./sections/Testimonials";
 import Blog from "./sections/Blog";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
-// AI chatbot — disabled for now. To re-enable: uncomment the next line AND the <ChatBot /> tag below.
-// import ChatBot from "./sections/ChatBot";
 import { TrialBanner, Partners, InstagramFeed } from "./sections/Extras";
+
+// AI chatbot add-on — toggled via featureFlags.aiChatbot in site.config.js.
+// __FEATURE_AI_CHATBOT__ is that flag inlined at build time (vite.config.js),
+// so when it's off the bundler drops the import and no chatbot chunk is
+// emitted; when on, the widget lazy-loads as its own chunk.
+const ChatbotWidget = __FEATURE_AI_CHATBOT__
+  ? lazy(() => import("./features/chatbot"))
+  : null;
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -50,7 +56,11 @@ export default function App() {
         </main>
         <Footer />
         <FloatingActions />
-        {/* <ChatBot /> */}
+        {ChatbotWidget && (
+          <Suspense fallback={null}>
+            <ChatbotWidget />
+          </Suspense>
+        )}
       </div>
     </ThemeProvider>
   );
