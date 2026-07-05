@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Section, Reveal, Eyebrow, Heading, Button } from "../components/UI";
 import { COACH } from "../lib/data";
+import { featureFlags } from "../lib/site.config";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, CalendarCheck, Languages, Home } from "lucide-react";
 
 const FIELDS = [
@@ -130,9 +131,11 @@ export default function Contact() {
                   <div className="text-white font-medium">{COACH.languages}</div>
                 </div>
               </div>
-              <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="w-full">
-                <CalendarCheck className="h-4 w-4" /> Book Online
-              </Button>
+              {featureFlags.booking && (
+                <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="w-full">
+                  <CalendarCheck className="h-4 w-4" /> Book Online
+                </Button>
+              )}
               <Button as="a" href={COACH.whatsapp} target="_blank" rel="noreferrer" variant="secondary" className="w-full">
                 <MessageCircle className="h-4 w-4 text-aqua-400" /> Chat on WhatsApp
               </Button>

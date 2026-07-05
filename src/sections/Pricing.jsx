@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Section, Reveal, Eyebrow, Heading, Button } from "../components/UI";
 import { PRICING, FAQS } from "../lib/data";
 import { Check, Plus, Sparkles } from "lucide-react";
-import { useCalendly } from "../useCalendly";
+import { useBookingAction } from "../features/booking/useBookingAction";
 
 export default function Pricing() {
   const [openFaq, setOpenFaq] = useState(0);
-  const { openPopup } = useCalendly();
+  const { book } = useBookingAction();
   return (
     <Section id="pricing" className="bg-navy-950">
       <Reveal className="text-center max-w-2xl mx-auto">
@@ -45,7 +45,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button onClick={openPopup} variant={p.popular ? "primary" : "secondary"} className="mt-7 w-full">
+              <Button onClick={book} variant={p.popular ? "primary" : "secondary"} className="mt-7 w-full">
                 {p.cta}
               </Button>
             </div>

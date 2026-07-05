@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, Dumbbell, CalendarCheck } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { COACH } from "../lib/data";
-import { BRAND } from "../lib/site.config";
+import { BRAND, featureFlags } from "../lib/site.config";
 import { Button } from "./UI";
 
 const LINKS = [
@@ -98,9 +98,11 @@ export default function Navbar() {
                 </motion.span>
               </AnimatePresence>
             </button>
-            <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="hidden sm:inline-flex !px-5 !py-2.5 text-sm">
-              <CalendarCheck className="h-4 w-4" /> Book Now
-            </Button>
+            {featureFlags.booking && (
+              <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="hidden sm:inline-flex !px-5 !py-2.5 text-sm">
+                <CalendarCheck className="h-4 w-4" /> Book Now
+              </Button>
+            )}
             <button onClick={() => setOpen(true)} aria-label="Open menu" className="lg:hidden grid h-10 w-10 place-items-center rounded-full text-white hover:bg-white/10">
               <Menu className="h-6 w-6" />
             </button>
@@ -133,9 +135,11 @@ export default function Navbar() {
                   </motion.li>
                 ))}
               </ul>
-              <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="mt-6 w-full">
-                <CalendarCheck className="h-4 w-4" /> Book a Trial
-              </Button>
+              {featureFlags.booking && (
+                <Button as="a" href={COACH.booking} target="_blank" rel="noreferrer" className="mt-6 w-full">
+                  <CalendarCheck className="h-4 w-4" /> Book a Trial
+                </Button>
+              )}
             </motion.div>
           </>
         )}

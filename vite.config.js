@@ -10,5 +10,6 @@ export default defineConfig({
     // the bundler dead-code-eliminates the lazy import and the feature's
     // chunk is not emitted at all. Source of truth: src/lib/site.config.js.
     __FEATURE_AI_CHATBOT__: JSON.stringify(featureFlags.aiChatbot),
+    __FEATURE_BOOKING__: JSON.stringify(featureFlags.booking),
   },
 })

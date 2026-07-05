@@ -9,7 +9,6 @@ import About from "./sections/About";
 import Benefits from "./sections/Benefits";
 import Services from "./sections/Services";
 import Pricing from "./sections/Pricing";
-import BookingSection from "./sections/BookingSection";
 import Schedule from "./sections/Schedule";
 import Gallery from "./sections/Gallery";
 import Testimonials from "./sections/Testimonials";
@@ -24,6 +23,12 @@ import { TrialBanner, Partners, InstagramFeed } from "./sections/Extras";
 // emitted; when on, the widget lazy-loads as its own chunk.
 const ChatbotWidget = __FEATURE_AI_CHATBOT__
   ? lazy(() => import("./features/chatbot"))
+  : null;
+
+// Booking add-on — same pattern (featureFlags.booking in site.config.js).
+// Off = no booking section, no chunk; Navbar/Contact hide their booking CTAs.
+const BookingSection = __FEATURE_BOOKING__
+  ? lazy(() => import("./features/booking"))
   : null;
 
 export default function App() {
@@ -45,7 +50,11 @@ export default function App() {
           <Benefits />
           <Services />
           <Pricing />
-          <BookingSection />
+          {BookingSection && (
+            <Suspense fallback={null}>
+              <BookingSection />
+            </Suspense>
+          )}
           <Schedule />
           <Gallery />
           <Testimonials />
