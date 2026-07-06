@@ -4,23 +4,28 @@
 // Search for "REPLACE" to find every value that must be changed per client.
 // ============================================================================
 
-// ---------------------------------------------------------------------------
-// Feature flags — optional add-on modules. Flip per client.
-// ---------------------------------------------------------------------------
-export const featureFlags = {
-  // AI chatbot add-on (src/features/chatbot). Needs ANTHROPIC_API_KEY set on
-  // the host (see docs/ADDON_CHATBOT.md). When false, the chatbot is not
-  // rendered and its code is excluded from the production JS bundle.
-  aiChatbot: true,
-  // Booking add-on (src/features/booking, see docs/ADDON_BOOKING.md). When
-  // false, the booking section and every "Book Now" nav button disappear and
-  // book-style CTAs fall back to WhatsApp.
-  booking: true,
-  // E-commerce add-on (src/features/ecommerce, see docs/ADDON_ECOMMERCE.md).
-  // Product showcase with WhatsApp ordering — no payment gateway. When false,
-  // the shop section and its nav link disappear and no shop code is bundled.
-  ecommerce: true,
-};
+// ═══════════════════════════════════════════════════════════════════════════
+// TIER — THE SINGLE LINE TO CHANGE PER CLIENT (or run
+//   npm run new-client -- --name=ClientName --tier=pro
+// which changes it for you). Presets live in src/config/tiers/:
+//   starter.js | pro.js | chatbot.js | ecommerce.js   (sellable tiers)
+//   _demo.js                                          (template demo: all on)
+// See docs/TIERS.md for what each tier includes.
+// ═══════════════════════════════════════════════════════════════════════════
+import tier from "../config/tiers/_demo.js";
+
+export const TIER = tier;
+
+// Feature flags come from the tier preset:
+//   booking   — booking add-on (docs/ADDON_BOOKING.md)
+//   aiChatbot — AI chatbot add-on, needs ANTHROPIC_API_KEY (docs/ADDON_CHATBOT.md)
+//   ecommerce — shop add-on (docs/ADDON_ECOMMERCE.md)
+//   bilingual — render 中文 alongside English in structured content (shop)
+export const featureFlags = { ...tier.featureFlags };
+
+// Which page sections render (tier.sections; null = all).
+// IDs match the <Section id> values used in App.jsx and the nav.
+export const hasSection = (id) => !tier.sections || tier.sections.includes(id);
 
 // ---------------------------------------------------------------------------
 // WhatsApp — REPLACE with the client's number (digits only, country code, no +)
@@ -39,7 +44,7 @@ export const CALENDLY_EVENT_SLUG = "free-trial-session"; // REPLACE if different
 export const CALENDLY_URL = `https://calendly.com/${PLACEHOLDER_CALENDLY_USERNAME}/${CALENDLY_EVENT_SLUG}`;
 
 export const booking = {
-  mode: "calendly", // "calendly" | "whatsapp"
+  mode: tier.booking?.mode ?? "calendly", // "calendly" | "whatsapp" — from the tier preset
   calendlyUrl: CALENDLY_URL,
 };
 

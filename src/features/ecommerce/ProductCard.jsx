@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Pill } from "../../components/UI";
 import { ArrowRight } from "lucide-react";
+import { featureFlags } from "../../lib/site.config";
 
 export default function ProductCard({ product, onSelect }) {
   return (
@@ -18,14 +19,14 @@ export default function ProductCard({ product, onSelect }) {
         />
         {!product.inStock && (
           <span className="absolute top-4 left-4 rounded-full bg-navy-950/80 px-3 py-1 text-xs font-semibold text-white/70 backdrop-blur">
-            Out of stock · 缺货
+            {featureFlags.bilingual ? "Out of stock · 缺货" : "Out of stock"}
           </span>
         )}
       </div>
       <div className="flex flex-1 flex-col p-5">
         <Pill tone="navy">{product.category}</Pill>
         <h3 className="mt-3 font-display font-bold text-lg text-white leading-snug">{product.name.en}</h3>
-        <p className="text-sm text-white/50">{product.name.zh}</p>
+        {featureFlags.bilingual && <p className="text-sm text-white/50">{product.name.zh}</p>}
         <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
           <span className="font-display font-extrabold text-xl text-white">RM {product.price}</span>
           <span className="inline-flex items-center gap-1 text-sm font-semibold text-aqua-400">

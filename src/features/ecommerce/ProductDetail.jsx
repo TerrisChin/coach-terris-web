@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Pill, Button } from "../../components/UI";
 import { X, Minus, Plus, MessageCircle } from "lucide-react";
 import { buildWhatsAppOrderUrl } from "./buildOrderMessage";
+import { featureFlags } from "../../lib/site.config";
 
 // Modal product view with a quantity stepper and a "Order via WhatsApp" CTA
 // (cart-free: one product per order keeps the flow simple for small clients).
@@ -45,10 +46,12 @@ export default function ProductDetail({ product, onClose }) {
                 <div className="p-6 sm:p-8">
                   <Pill tone="navy">{product.category}</Pill>
                   <h2 className="mt-4 font-display font-extrabold text-2xl text-white leading-tight">{product.name.en}</h2>
-                  <p className="text-white/50">{product.name.zh}</p>
+                  {featureFlags.bilingual && <p className="text-white/50">{product.name.zh}</p>}
 
                   <p className="mt-4 text-sm text-white/70 leading-relaxed">{product.desc.en}</p>
-                  <p className="mt-2 text-sm text-white/55 leading-relaxed">{product.desc.zh}</p>
+                  {featureFlags.bilingual && (
+                    <p className="mt-2 text-sm text-white/55 leading-relaxed">{product.desc.zh}</p>
+                  )}
 
                   <div className="mt-5 font-display font-extrabold text-3xl text-white">
                     RM {product.price}
@@ -59,7 +62,7 @@ export default function ProductDetail({ product, onClose }) {
                     <>
                       {/* Quantity stepper */}
                       <div className="mt-5 flex items-center gap-4">
-                        <span className="text-sm text-white/60">Qty 数量</span>
+                        <span className="text-sm text-white/60">{featureFlags.bilingual ? "Qty 数量" : "Qty"}</span>
                         <div className="flex items-center gap-1 rounded-full bg-navy-950/60 border border-white/10 p-1">
                           <button
                             onClick={() => setQty((q) => Math.max(1, q - 1))}
@@ -97,7 +100,7 @@ export default function ProductDetail({ product, onClose }) {
                     </>
                   ) : (
                     <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center text-sm text-white/60">
-                      Currently out of stock · 暂时缺货<br />
+                      {featureFlags.bilingual ? "Currently out of stock · 暂时缺货" : "Currently out of stock"}<br />
                       Message us on WhatsApp to be notified when it's back.
                     </div>
                   )}

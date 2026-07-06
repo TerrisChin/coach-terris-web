@@ -1,14 +1,16 @@
 import { useState } from "react";
 import { Dumbbell, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { COACH } from "../lib/data";
-import { BRAND, featureFlags } from "../lib/site.config";
+import { BRAND, featureFlags, hasSection } from "../lib/site.config";
 
 const NAV = [
   ["About", "about"], ["Services", "services"], ["Pricing", "pricing"],
-  ["Gallery", "gallery"],
-  ...(featureFlags.ecommerce ? [["Shop", "shop"]] : []),
+  ["Gallery", "gallery"], ["Shop", "shop"],
   ["Reviews", "testimonials"], ["Tips", "blog"], ["Contact", "contact"],
-];
+].filter(([, id]) => {
+  if (id === "shop" && !featureFlags.ecommerce) return false;
+  return hasSection(id);
+});
 
 export default function Footer() {
   const [email, setEmail] = useState("");

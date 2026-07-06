@@ -1,6 +1,7 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "./context/ThemeContext";
+import { hasSection } from "./lib/site.config";
 import Navbar from "./components/Navbar";
 import FloatingActions from "./components/FloatingActions";
 import Loader from "./components/Loader";
@@ -50,29 +51,31 @@ export default function App() {
       <div className="bg-navy-950 text-white selection:bg-aqua-400 selection:text-navy-950">
         <Navbar />
         <main>
+          {/* Sections render only when the active tier includes them
+              (tier.sections in src/config/tiers/, null = all) */}
           <Hero />
-          <Partners />
-          <About />
-          <Benefits />
-          <Services />
-          <Pricing />
-          {BookingSection && (
+          {hasSection("partners") && <Partners />}
+          {hasSection("about") && <About />}
+          {hasSection("benefits") && <Benefits />}
+          {hasSection("services") && <Services />}
+          {hasSection("pricing") && <Pricing />}
+          {BookingSection && hasSection("booking") && (
             <Suspense fallback={null}>
               <BookingSection />
             </Suspense>
           )}
-          <Schedule />
-          <Gallery />
-          {ShopSection && (
+          {hasSection("schedule") && <Schedule />}
+          {hasSection("gallery") && <Gallery />}
+          {ShopSection && hasSection("shop") && (
             <Suspense fallback={null}>
               <ShopSection />
             </Suspense>
           )}
-          <Testimonials />
-          <Blog />
-          <TrialBanner />
-          <InstagramFeed />
-          <Contact />
+          {hasSection("testimonials") && <Testimonials />}
+          {hasSection("blog") && <Blog />}
+          {hasSection("trial") && <TrialBanner />}
+          {hasSection("instagram") && <InstagramFeed />}
+          {hasSection("contact") && <Contact />}
         </main>
         <Footer />
         <FloatingActions />

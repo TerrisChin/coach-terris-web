@@ -3,21 +3,24 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, Dumbbell, CalendarCheck } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { COACH } from "../lib/data";
-import { BRAND, featureFlags } from "../lib/site.config";
+import { BRAND, featureFlags, hasSection } from "../lib/site.config";
 import { Button } from "./UI";
 
+// Links filter down to what the active tier + feature flags actually render
 const LINKS = [
   ["Home", "home"],
   ["About", "about"],
   ["Services", "services"],
   ["Pricing", "pricing"],
   ["Gallery", "gallery"],
-  // Shop link only exists when the e-commerce add-on is on
-  ...(featureFlags.ecommerce ? [["Shop", "shop"]] : []),
+  ["Shop", "shop"],
   ["Reviews", "testimonials"],
   ["Tips", "blog"],
   ["Contact", "contact"],
-];
+].filter(([, id]) => {
+  if (id === "shop" && !featureFlags.ecommerce) return false;
+  return hasSection(id);
+});
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
