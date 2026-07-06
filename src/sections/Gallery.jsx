@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Section, Reveal, Eyebrow, Heading } from "../components/UI";
-import { GALLERY } from "../lib/data";
+import { GALLERY, IMAGES } from "../lib/data";
 import { MoveHorizontal } from "lucide-react";
 
 function BeforeAfter() {
@@ -22,11 +22,11 @@ function BeforeAfter() {
       onTouchMove={(e) => onMove(e.touches[0].clientX)}
       onClick={(e) => onMove(e.clientX)}
     >
-      <img src="/placeholders/after.svg" alt="Training session at location B" className="absolute inset-0 h-full w-full object-cover" />
-      <span className="absolute top-4 left-4 rounded-full bg-navy-950/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur">Location B</span>
+      <img src={IMAGES.compareB.src} alt={IMAGES.compareB.alt} className="absolute inset-0 h-full w-full object-cover" />
+      <span className="absolute top-4 left-4 rounded-full bg-navy-950/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur">{IMAGES.compareB.label}</span>
       <div className="absolute inset-0 overflow-hidden" style={{ width: `${pos}%` }}>
-        <img src="/placeholders/before.svg" alt="Training session at location A" className="absolute inset-0 h-full object-cover" style={{ width: `${100 / (pos / 100)}%`, maxWidth: "none" }} />
-        <span className="absolute top-4 left-4 rounded-full bg-aqua-500 px-3 py-1 text-xs font-bold text-navy-950">Location A</span>
+        <img src={IMAGES.compareA.src} alt={IMAGES.compareA.alt} className="absolute inset-0 h-full object-cover" style={{ width: `${100 / (pos / 100)}%`, maxWidth: "none" }} />
+        <span className="absolute top-4 left-4 rounded-full bg-aqua-500 px-3 py-1 text-xs font-bold text-navy-950">{IMAGES.compareA.label}</span>
       </div>
       <div className="absolute top-0 bottom-0 w-1 bg-aqua-400 shadow-lg" style={{ left: `${pos}%` }}>
         <span className="absolute top-1/2 left-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-aqua-400 text-navy-950 shadow-xl">

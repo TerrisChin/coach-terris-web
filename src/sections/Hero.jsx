@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, PlayCircle, ChevronDown } from "lucide-react";
 import { Button } from "../components/UI";
-import { COACH } from "../lib/data";
+import { COACH, IMAGES } from "../lib/data";
 import { useBookingAction } from "../features/booking/useBookingAction";
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.12, delayChildren: 0.2 } } };
@@ -14,8 +14,8 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <img
-          src="/placeholders/hero.svg"
-          alt="Training session at Demo Studio"
+          src={IMAGES.hero.src}
+          alt={IMAGES.hero.alt}
           className="h-full w-full object-cover opacity-40"
           loading="eager"
         />

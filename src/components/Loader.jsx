@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Waves } from "lucide-react";
+import { Dumbbell } from "lucide-react";
+import { BRAND } from "../lib/site.config";
 
 export default function Loader() {
   return (
@@ -13,7 +14,7 @@ export default function Loader() {
           transition={{ repeat: Infinity, duration: 2 }}
           className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-aqua-400 to-aqua-600 shadow-lg shadow-aqua-500/40"
         >
-          <Waves className="h-8 w-8 text-navy-950" strokeWidth={2.5} />
+          <Dumbbell className="h-8 w-8 text-navy-950" strokeWidth={2.5} />
         </motion.div>
         <div className="h-1 w-40 overflow-hidden rounded-full bg-white/10">
           <motion.div
@@ -22,7 +23,7 @@ export default function Loader() {
             className="h-full w-1/2 rounded-full bg-gradient-to-r from-transparent via-aqua-400 to-transparent"
           />
         </div>
-        <p className="font-display font-semibold text-white/60 tracking-wide">Diving in…</p>
+        <p className="font-display font-semibold text-white/60 tracking-wide">{BRAND.first}{BRAND.accent}…</p>
       </div>
     </motion.div>
   );

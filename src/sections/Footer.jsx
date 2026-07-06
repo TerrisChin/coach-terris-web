@@ -41,7 +41,7 @@ export default function Footer() {
                   placeholder="your@email.com"
                   className="flex-1 rounded-full bg-white/5 border border-white/10 px-4 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-aqua-500 focus:outline-none"
                 />
-                <button className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-r from-aqua-400 to-aqua-600 text-navy-950 hover:opacity-90 transition">
+                <button aria-label="Subscribe to newsletter" className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-r from-aqua-400 to-aqua-600 text-navy-950 hover:opacity-90 transition">
                   <Send className="h-4 w-4" />
                 </button>
               </form>

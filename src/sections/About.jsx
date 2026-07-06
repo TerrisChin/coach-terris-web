@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Section, Reveal, Eyebrow, Heading, Counter, Button } from "../components/UI";
-import { STATS, TIMELINE, CERTS, COACH } from "../lib/data";
+import { STATS, TIMELINE, CERTS, COACH, IMAGES } from "../lib/data";
 import { Quote } from "lucide-react";
 
 export default function About() {
@@ -12,8 +12,8 @@ export default function About() {
           <div className="relative">
             <div className="absolute -inset-4 rounded-3xl bg-gradient-to-tr from-aqua-500/20 to-transparent blur-2xl" />
             <img
-              src="/placeholders/portrait.svg"
-              alt="Lead trainer portrait"
+              src={IMAGES.portrait.src}
+              alt={IMAGES.portrait.alt}
               className="relative rounded-3xl object-cover w-full h-[480px] shadow-2xl ring-1 ring-white/10"
             />
             <motion.div

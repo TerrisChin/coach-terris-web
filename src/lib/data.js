@@ -92,6 +92,15 @@ export const SAFETY_TIPS = [
   { title: "Recover on purpose", text: "Sleep, hydration, and rest days are where progress actually happens. Train hard, recover harder." },
 ];
 
+// Standalone page images with their alt text (gallery grid images are in
+// GALLERY below; product images are on each PRODUCTS entry).
+export const IMAGES = {
+  hero: { src: "/placeholders/hero.svg", alt: "Training session at Demo Studio" },
+  portrait: { src: "/placeholders/portrait.svg", alt: "Lead trainer portrait" },
+  compareA: { src: "/placeholders/before.svg", alt: "Training session at location A", label: "Location A" },
+  compareB: { src: "/placeholders/after.svg", alt: "Training session at location B", label: "Location B" },
+};
+
 export const GALLERY = [
   { src: "/placeholders/gallery-1.svg", h: "tall", alt: "One-on-one coaching session at Demo Studio" },
   { src: "/placeholders/gallery-2.svg", h: "tall", alt: "Strength training session on the main floor" },

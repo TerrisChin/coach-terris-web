@@ -5,6 +5,13 @@ import { featureFlags } from './src/lib/site.config.js'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      // Silence rolldown's advisory plugin-timing notice — it's machine-load
+      // dependent and makes CI/QA "zero warnings" checks flaky.
+      checks: { pluginTimings: false },
+    },
+  },
   define: {
     // Inlined as a literal at build time so that when a feature flag is off,
     // the bundler dead-code-eliminates the lazy import and the feature's

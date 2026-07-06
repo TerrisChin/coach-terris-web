@@ -36,7 +36,7 @@ export default function FloatingActions() {
               initial={{ opacity: 0, x: 20, scale: 0.9 }} animate={{ opacity: 1, x: 0, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }}
               className="absolute bottom-1 right-16 w-max max-w-[200px] rounded-2xl rounded-br-sm bg-white px-4 py-2.5 shadow-xl"
             >
-              <button onClick={() => setTip(false)} className="absolute -top-2 -left-2 grid h-5 w-5 place-items-center rounded-full bg-navy-900 text-white">
+              <button onClick={() => setTip(false)} aria-label="Dismiss tip" className="absolute -top-2 -left-2 grid h-5 w-5 place-items-center rounded-full bg-navy-900 text-white">
                 <X className="h-3 w-3" />
               </button>
               <p className="text-sm font-medium text-navy-900">👋 Questions? Chat with us!</p>
