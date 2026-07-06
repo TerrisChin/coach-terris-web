@@ -105,6 +105,83 @@ export const GALLERY = [
 
 export const PARTNERS = ["Demo Cert Body", "First Aid Council", "KL Fitness Expo", "Wellness MY", "Strength Guild", "Condo Gyms KL"];
 
+// E-commerce add-on products (src/features/ecommerce, docs/ADDON_ECOMMERCE.md).
+// price is a number in RM. Orders are placed via WhatsApp — no payment gateway.
+export const PRODUCTS = [
+  {
+    id: "resistance-bands",
+    name: { en: "Resistance Band Set", zh: "弹力带套装" },
+    desc: {
+      en: "Five loop bands from extra-light to extra-heavy, with carry pouch. The same set we use in mobile sessions.",
+      zh: "五条从超轻到超重的环形弹力带，附收纳袋。与我们上门训练课使用的同款。",
+    },
+    price: 89,
+    image: "/placeholders/product-1.svg",
+    category: "Equipment",
+    inStock: true,
+  },
+  {
+    id: "training-tee",
+    name: { en: "Demo Studio Training Tee", zh: "训练速干T恤" },
+    desc: {
+      en: "Lightweight quick-dry tee with the studio logo. Unisex sizes S–XXL — note your size in the WhatsApp message.",
+      zh: "轻盈速干、印有工作室标志的T恤。男女同款 S–XXL——请在 WhatsApp 信息中注明尺码。",
+    },
+    price: 59,
+    image: "/placeholders/product-2.svg",
+    category: "Apparel",
+    inStock: true,
+  },
+  {
+    id: "foam-roller",
+    name: { en: "Recovery Foam Roller", zh: "按摩泡沫轴" },
+    desc: {
+      en: "Medium-density 45 cm roller for post-session recovery. Comes with a printed routine card.",
+      zh: "中等密度 45 厘米泡沫轴，适合训练后放松，附赠图解放松流程卡。",
+    },
+    price: 75,
+    image: "/placeholders/product-3.svg",
+    category: "Equipment",
+    inStock: true,
+  },
+  {
+    id: "shaker-bottle",
+    name: { en: "Studio Shaker Bottle 700ml", zh: "摇摇杯 700毫升" },
+    desc: {
+      en: "Leak-proof 700 ml shaker with mixing ball and studio branding. BPA-free.",
+      zh: "防漏 700 毫升摇摇杯，附搅拌球和工作室标志，不含双酚A。",
+    },
+    price: 39,
+    image: "/placeholders/product-4.svg",
+    category: "Accessories",
+    inStock: true,
+  },
+  {
+    id: "gym-towel-set",
+    name: { en: "Gym Towel Set (2 pcs)", zh: "健身毛巾两件套" },
+    desc: {
+      en: "Two quick-dry microfibre towels — one for the bench, one for you. Machine washable.",
+      zh: "两条速干超细纤维毛巾——一条铺器械，一条擦汗。可机洗。",
+    },
+    price: 45,
+    image: "/placeholders/product-5.svg",
+    category: "Accessories",
+    inStock: false,
+  },
+  {
+    id: "gift-card-5",
+    name: { en: "5-Session Gift Card", zh: "五节课礼品卡" },
+    desc: {
+      en: "Gift five 1-hour personal training sessions to someone you care about. Valid 6 months from purchase.",
+      zh: "赠送亲友五节一对一（每节一小时）私教课。自购买日起六个月内有效。",
+    },
+    price: 580,
+    image: "/placeholders/product-6.svg",
+    category: "Packages",
+    inStock: true,
+  },
+];
+
 export const BLOG = [
   {
     category: "Getting Started",

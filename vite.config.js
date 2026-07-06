@@ -11,5 +11,6 @@ export default defineConfig({
     // chunk is not emitted at all. Source of truth: src/lib/site.config.js.
     __FEATURE_AI_CHATBOT__: JSON.stringify(featureFlags.aiChatbot),
     __FEATURE_BOOKING__: JSON.stringify(featureFlags.booking),
+    __FEATURE_ECOMMERCE__: JSON.stringify(featureFlags.ecommerce),
   },
 })

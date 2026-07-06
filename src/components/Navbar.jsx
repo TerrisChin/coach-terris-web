@@ -12,6 +12,8 @@ const LINKS = [
   ["Services", "services"],
   ["Pricing", "pricing"],
   ["Gallery", "gallery"],
+  // Shop link only exists when the e-commerce add-on is on
+  ...(featureFlags.ecommerce ? [["Shop", "shop"]] : []),
   ["Reviews", "testimonials"],
   ["Tips", "blog"],
   ["Contact", "contact"],

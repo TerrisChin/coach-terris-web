@@ -16,6 +16,10 @@ export const featureFlags = {
   // false, the booking section and every "Book Now" nav button disappear and
   // book-style CTAs fall back to WhatsApp.
   booking: true,
+  // E-commerce add-on (src/features/ecommerce, see docs/ADDON_ECOMMERCE.md).
+  // Product showcase with WhatsApp ordering — no payment gateway. When false,
+  // the shop section and its nav link disappear and no shop code is bundled.
+  ecommerce: true,
 };
 
 // ---------------------------------------------------------------------------

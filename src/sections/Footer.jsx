@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Dumbbell, Instagram, Facebook, Youtube, Send } from "lucide-react";
 import { COACH } from "../lib/data";
-import { BRAND } from "../lib/site.config";
+import { BRAND, featureFlags } from "../lib/site.config";
 
 const NAV = [
   ["About", "about"], ["Services", "services"], ["Pricing", "pricing"],
-  ["Gallery", "gallery"], ["Reviews", "testimonials"], ["Tips", "blog"], ["Contact", "contact"],
+  ["Gallery", "gallery"],
+  ...(featureFlags.ecommerce ? [["Shop", "shop"]] : []),
+  ["Reviews", "testimonials"], ["Tips", "blog"], ["Contact", "contact"],
 ];
 
 export default function Footer() {

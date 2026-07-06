@@ -31,6 +31,12 @@ const BookingSection = __FEATURE_BOOKING__
   ? lazy(() => import("./features/booking"))
   : null;
 
+// E-commerce add-on — product showcase with WhatsApp ordering
+// (featureFlags.ecommerce). Off = no shop section, no nav link, no chunk.
+const ShopSection = __FEATURE_ECOMMERCE__
+  ? lazy(() => import("./features/ecommerce"))
+  : null;
+
 export default function App() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -57,6 +63,11 @@ export default function App() {
           )}
           <Schedule />
           <Gallery />
+          {ShopSection && (
+            <Suspense fallback={null}>
+              <ShopSection />
+            </Suspense>
+          )}
           <Testimonials />
           <Blog />
           <TrialBanner />
