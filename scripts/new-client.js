@@ -80,6 +80,6 @@ console.log(`
 ${perTier[tier].map((s, i) => `  ${i + 3}. ${s}`).join("\n")}
   ${perTier[tier].length + 3}. Replace placeholder images in public/placeholders/
   ${perTier[tier].length + 4}. index.html — <title>, meta description, canonical URL, JSON-LD
-  ${perTier[tier].length + 5}. Netlify — create the site, set env vars, deploy (DEPLOYMENT.md)
+  ${perTier[tier].length + 5}. Netlify — create the site, set env vars, deploy (docs/DEPLOYMENT.md)
 
 Run "npm run dev" to review, docs/TIERS.md for tier details.`);

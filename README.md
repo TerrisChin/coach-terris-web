@@ -1,68 +1,43 @@
-# Coach Marcus — Freelance Swimming Coach Website
+# Client-Site Template (Demo Studio)
 
-A premium, mobile-first swimming coach website built with **React + Vite + Tailwind CSS + Framer Motion**.
+A reusable one-page website template for small Malaysian service businesses,
+built with **React + Vite + Tailwind CSS + Framer Motion** and sold in four
+tiers. This branch (`template-base`) carries fictional "Demo Studio"
+placeholder content — every value a client needs changed lives in
+`src/lib/site.config.js` and `src/lib/data.js`.
 
-## Features
-- Sticky animated navbar with scroll-spy + mobile drawer
-- Animated underwater hero with layered SVG waves & CTAs
-- Dark / light mode toggle
-- Animated counters, scroll-reveal sections, smooth transitions
-- Services & pricing cards with "most popular" highlighting
-- FAQ accordion, weekly schedule table, water-safety tips
-- Masonry gallery + draggable before/after slider
-- Auto-rotating testimonials carousel with star ratings
-- Booking form, embedded map, operating hours, newsletter
-- Floating WhatsApp button + scroll-to-top
-- Instagram feed strip, partner logos, free-trial banner
-- SEO meta tags + JSON-LD structured data
-- Loading screen, accessibility (aria labels, focus rings)
+## Quick start
 
-## Getting Started
 ```bash
 npm install
-npm run dev      # local dev server
-npm run build    # production build → dist/
-npm run preview  # preview the build
+npm run dev        # local dev server
+npm run build      # production build → dist/
+
+# spin up a client project on a tier:
+npm run new-client -- --name=ClientName --tier=pro
 ```
 
-## Structure
-```
-src/
-  components/   UI.jsx, Navbar.jsx, FloatingActions.jsx, Loader.jsx
-  sections/     Hero, About, Benefits, Services, Pricing,
-                Schedule, Gallery, Testimonials, Contact, Footer, Extras
-  context/      ThemeContext.jsx
-  lib/          data.js   ← all editable site content
-```
+## Tiers & add-ons
 
-## Customizing
-Edit `src/lib/data.js` to change coach name, phone, WhatsApp link,
-services, pricing, testimonials, schedule, FAQs, and images.
-Colors live in `tailwind.config.js` (navy / aqua palettes).
+| Tier | Booking | AI chatbot | Shop | Bilingual EN/中文 |
+|---|---|---|---|---|
+| Starter | WhatsApp | — | — | — |
+| Pro | Calendly | — | — | ✅ |
+| Booking + Chatbot | Calendly | ✅ | — | ✅ |
+| Simple E-commerce | — | — | ✅ WhatsApp orders | ✅ |
 
-## Optional advanced features (scaffolding hooks)
-The architecture is ready to extend with: online booking/payment
-integration (wire the Contact form to Stripe/Calendly), a student
-dashboard, blog section, AI chatbot, and i18n multi-language support.
+Add-ons are isolated modules in `src/features/` behind build-time feature
+flags — a disabled add-on ships zero bytes. Deployment is Netlify
+(`netlify.toml`); the chatbot's Anthropic API key lives in a Netlify env
+var, never in client code.
 
-## AI Chatbot Assistant (important deployment note)
+## Documentation
 
-The site includes an AI chatbot (`src/sections/ChatBot.jsx`) powered by Claude.
-It calls the Anthropic API from the browser. This works automatically inside
-Claude's artifact preview, but **for your own live website you must NOT expose
-an API key in the browser**. Instead:
+**Start at [docs/README.md](docs/README.md)** — architecture, folder
+structure, and links to everything: tier pricing ([docs/TIERS.md](docs/TIERS.md)),
+the client onboarding runbook
+([docs/CLIENT_ONBOARDING.md](docs/CLIENT_ONBOARDING.md)), deployment
+([docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)), maintenance & template updates
+([docs/MAINTENANCE.md](docs/MAINTENANCE.md)), and per-add-on guides.
 
-1. Create a tiny serverless function (Vercel/Netlify/Cloudflare) that holds your
-   `ANTHROPIC_API_KEY` as a secret and forwards requests to
-   `https://api.anthropic.com/v1/messages`.
-2. Change the `fetch("https://api.anthropic.com/v1/messages", …)` URL in
-   ChatBot.jsx to point at your own function (e.g. `/api/chat`).
-
-The chatbot's knowledge (services, pricing, FAQs, contact) is built
-automatically from `src/lib/data.js`, so it stays accurate when you edit your data.
-
-## Blog / Swimming Tips
-Editable in `src/lib/data.js` under `BLOG`. Each post has a category, title,
-excerpt, body paragraphs, and a "Coach's note" tip. Tips were researched from
-reputable swim-coaching sources (US Masters Swimming, Effortless Swimming, etc.)
-and written in Coach Terris's voice.
+Version history: [CHANGELOG.md](CHANGELOG.md).
